@@ -1,0 +1,666 @@
+
+{% assign custom_color = '#009f5d' %}
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet"> 
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+  
+  .mainContainer {
+    font-family: 'Roboto';
+  	display: flex;
+    color: #383838;
+  }
+
+   
+  .mainContainer input[type="text"], input[type="search"], textarea {
+    border:2px solid #eeeeee ;    
+	background: #f8f8f8 ;
+	border-radius: 7px;    
+    
+  }
+  
+
+  .reviewtxt1 {
+    font-size: 12px;
+  }
+  
+  .revbitTitle {
+    font-size: 24px;
+    margin-bottom: 0px;
+  }
+
+  .revbitTitle2 {
+    font-size: 18px;
+    margin-bottom: 0px;
+  }
+
+  
+  .reviewtxt2 {
+    color: #6a7175;
+    font-size: 14px;
+  }
+
+  .reviewcutomcolor {
+    color: {{ custom_color }};
+  }
+
+  
+  .clear {
+    clear: both;
+   }
+  
+   .largeStar{
+     font-size: x-large;
+     letter-spacing:15px
+   }
+
+   .mb0 {
+    margin-bottom: 0;
+   }
+
+   .mb-10 {
+    margin-bottom: -10px;
+   }
+
+  .reviewHr { 
+    display: block;
+    margin-top: 20px;
+    margin-bottom: 0.5em;
+    margin-left: 30px;
+    margin-right: 30px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #ececec;
+  }
+    
+  .reviewSL {
+  	display: flex;
+  }
+
+  .showElement {
+  	display: block !important;
+  }
+
+  .hideElement {
+  	display: none;
+  }
+
+  .circle {
+    position: relative;
+    background-color: #f8f8f8;
+    border-radius: 50%;
+    height: 50px;
+    text-align: center;
+    width: 50px;
+    margin-right: 10px;
+    border:2px solid #eeeeee;    
+  }
+
+  .verifiedTick {
+    position: absolute;
+	right: -2px;
+	bottom: -4px;
+    font-size: 16px;
+    color: {{ custom_color }};
+  }
+  
+  .custName {
+	margin: auto 0px;
+  }
+  
+  .verifiedBadge {
+    margin: auto;
+    color: {{ custom_color }};    
+    background-color: {{ custom_color }}10;
+    border-radius: 4px;
+	padding: 0px 5px
+  }
+  
+  .initials {
+    font-size: 16px; 
+    line-height: 1;
+    position: relative;
+    top: 14px; 
+  }
+  
+  
+  .commentBlock {
+    display: block;
+    margin: 15px 30px 15px 30px;
+  }
+
+
+  .reviewBox {
+	margin: 0px 10px 10px 90px;
+  }
+  
+  .reviewTxt{
+    
+      color: #111111;
+
+  }
+
+
+  .noborder {
+    border:0px; 
+    padding: 0;
+  }
+
+  .card {
+    /* Add shadows to create the "card" effect */
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    border-radius: 5px; /* 5px rounded corners */  
+    transition: 0.3s;
+    margin: 5px;
+    padding-top: 10px;
+    width: 100%;
+  }
+
+  .alignRight {
+    float: right;
+	width: 50%;
+	text-align: right;
+  }
+
+  .alignLeft {
+    float: left;
+	width: 50%;
+	text-align: left;
+  }
+
+  .fullwidthTable {
+    width: 100%;
+    margin-bottom: 30px;
+  }
+  
+  .reviewbitBtn {
+    -webkit-border-radius: 5;
+    -moz-border-radius: 5;
+    border-radius: 5px;
+    font-family: Arial;
+    color: #ffffff;
+    font-size: 14px;
+    background: {{ custom_color }};
+    padding: 7px 20px 7px 20px;
+    text-decoration: none;
+    border: 0;
+  }
+
+  .reviewbitBtn:hover {
+    background: {{ custom_color }}99;
+    text-decoration: none;
+  }
+
+  .unchecked {
+	color: #868686;
+  }
+  
+  .checked {
+    color: {{ custom_color }};
+  }
+
+  .checkedOrange {
+    color: orange;
+  }
+
+  .starHead {
+	font-size : 18px;
+  }
+  
+   /* The Modal (background) */
+  .modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  }
+
+  /* Modal Content/Box */
+  .modal-content {
+    background-color: #fefefe;
+    border-radius: 5px; /* 5px rounded corners */  
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 50%; /* Could be more or less, depending on screen size */
+  }
+
+  /* The Close Button */
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  } 
+  
+  .imgCenter{
+    vertical-align: middle;
+    padding-bottom: 4px;
+    height: 30px;
+
+  }
+  .ratingText{
+    padding-bottom: 9px;
+	vertical-align: middle;
+  }
+  
+  /* Rating Star Widgets Style */
+.rating-stars {
+	display:flex;
+  margin-top:5px;
+}
+
+  
+.rating-stars ul {
+  list-style-type:none;
+  padding:0;
+  
+  -moz-user-select:none;
+  -webkit-user-select:none;
+}
+.rating-stars ul > li.star {
+  display:inline-block;
+  
+}
+
+/* Idle State of the stars */
+.rating-stars ul > li.star > i.fa {
+  font-size:2.5em; /* Change the size of the stars */
+  color:#ccc; /* Color on idle state */
+}
+
+/* Hover state of the stars */
+.rating-stars ul > li.star.hover > i.fa {
+  color:#FFCC36;
+}
+
+/* Selected state of the stars */
+.rating-stars ul > li.star.selected > i.fa {
+  color:#FF912C;
+}
+  
+ 
+  .text-message {
+   	margin-top:5px; 
+    margin-left: 10px;
+  }
+
+  .revbittextarea {
+    border: 2px solid {{ custom_color }};
+	  border-radius: 7px;
+    background: {{ custom_color }}10;
+  }
+ 
+
+  .revbitmodal input:focus, textarea:focus{
+    border: 2px solid {{ custom_color }};
+	  border-radius: 7px;
+    background: {{ custom_color }}10;    
+  }
+  
+  .thumbButton {
+    background:none;
+    border:0px;
+    font-size: 20px;
+  }
+
+  .thumbButtonSelected {
+    background:none;
+    border:0px;
+    color:{{ custom_color }};
+  }
+  
+  .inputfile {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+  }
+  .inputfile + label {
+	  width:75px;
+    height:75px;
+    color: {{ custom_color }};
+    border: 2px dashed {{ custom_color }};
+	  border-radius: 7px;
+    background: {{ custom_color }}10;
+    text-align: center;
+	  padding: 12px;
+  }
+
+  .inputfile:focus + label,
+  .inputfile + label:hover {
+    border: 2px solid {{ custom_color }};
+	border-radius: 7px;
+    background: {{ custom_color }}10;
+  }
+  
+  .fileSelected {
+    display:none;
+	width:75px;
+    height:75px;
+    margin-right: 10px;
+    border: 2px solid {{ custom_color }};
+	border-radius: 7px;  
+    text-align: center;
+  }
+
+@media only screen and (max-width: 700px) {
+  .modal-content {
+	width: 75%;
+  }
+}
+  
+  
+@media only screen and (max-width: 480px) {
+  .alignLeft {
+	width: 100%;
+  }
+  .alignRight {
+    float:none;
+	width: 100%;
+  }
+  .modal-content {
+	width: 95%;
+  }
+}
+</style>
+
+<div class="mainContainer">
+
+     <div class="card">
+
+        <!-- title section -->
+        <div class="commentBlock">
+
+            <div class="alignLeft">
+                <p class="revbitTitle">Customer Reviews</p>
+              <span class="revbitTitle2"><b>4.6</b>/5.0 </span>
+              <span class="fa fa-star checkedOrange starHead"></span>
+              <span class="fa fa-star checkedOrange starHead"></span>
+              <span class="fa fa-star checkedOrange starHead"></span>
+              <span class="fa fa-star checkedOrange starHead"></span>
+              <span class="fa fa-star starHead"></span>
+        <br>
+                Based in 2,456 Ratings
+            </div>
+            <div class="alignRight">
+                <button id="myBtn" class="reviewbitBtn"><i class="fa fa-edit"></i> Write a review</button><br>
+              <span class="reviewtxt1">Powered by <img class="imgCenter" src="https://cdn.shopify.com/s/files/1/0277/5118/6496/files/Reviewbit_new_logo_100x32_03_trans.png?v=1615881904"> </span>
+            </div>
+
+        </div>
+       <div class="clear"></div>
+        <hr class="reviewHr">
+
+
+<!-- comments list -->
+        <div> 
+          <table class="fullwidthTable">
+
+			{% assign reviewUsers = "Suhail, Nafih, Maria, Parvathy, John, Mathew" | split: ", " %}
+			{% assign reviewUsersInitials = "SH, NF, MR, PV, JH, MT" | split: ", " %}
+			{% assign reviewTitle = "Review Title 1, Review Title 2, Review Title 3, Review Title 4, Review Title 5, Review Title 6" | split: ", " %}
+			{% assign reviewTexts = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.: It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum:Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book: It has survived not only five centuries, but also the leap into electronic typesetting: remaining essentially unchanged: It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing: software like Aldus PageMaker including versions of Lorem Ipsum." | split: ":" %}
+			{% assign counter = 0 %}
+
+            {% for reviewUser in reviewUsers %}
+
+            {% assign value = counter | modulo:2 %}
+            {% if value == 0 %}
+              {% assign display = "showElement" %}
+            {% else %}
+              {% assign display = "hideElement" %}
+            {% endif %}
+
+                <tr>
+                  <td class="noborder">
+                    <div class="commentBlock">
+
+                      <div class="alignLeft reviewSL">
+                        <div>
+                          <div class="circle">
+                            <span class="initials">{{ reviewUsersInitials[counter] }}</span>
+                            <i class=" {{ display }} verifiedTick fa fa-check-circle"></i>
+                          </div>
+                        </div>
+                        <div >
+                          <span class="fa fa-star checked"></span>
+                          <span class="fa fa-star checked"></span>
+                          <span class="fa fa-star checked"></span>
+                          <span class="fa fa-star checked"></span>
+                          <span class="fa fa-star unchecked"></span>
+                          &nbsp&nbsp 2 days ago<br>
+                          <div class="reviewSL">
+                          	<h6 class="custName">{{ reviewUser }}</h6>
+                            <span class="verifiedBadge {{ display }}">Verified User</span>                           
+                          </div>
+                        </div>
+                      </div>
+                      <div class="alignRight">
+                        <br>
+                        Helpful? <button class="thumbButton"><i class="thumbicon fa fa-thumbs-up"></i></button> 21
+                      </div>
+
+                    </div>
+                    <div class="clear"></div>
+                    <div class="reviewBox">
+                      <span class="reviewcutomcolor"><b>{{reviewTitle[counter] }}</b></span>
+                      <p class="reviewTxt">{{ reviewTexts[counter] }}</p>
+
+                    </div>
+
+                  </td>
+                </tr>            
+            
+            
+            
+            
+            
+            
+              {% assign counter = counter | plus: 1 %}            
+            {% endfor %}        
+            
+        </table>
+        </div>
+
+     </div>
+
+<!-- comments creations -->
+
+     <div  id="revbitModal" class="modal card commentAdd">
+     	<div class="modal-content revbitmodal">
+            <span class="close">&times;</span>
+
+            <p class="revbitTitle mb-10">Share your experience</p>
+            <span class="reviewtxt1">with <img class="imgCenter" src="https://cdn.shopify.com/s/files/1/0277/5118/6496/files/Reviewbit_new_logo_100x32_03_trans.png?v=1615881904"> </span>
+
+          
+
+            <p style="margin-top:15px; margin-bottom:0px">How would you rate this ?</p> 
+          	          
+          <section class='rating-widget'>
+
+            <!-- Rating Stars Box -->
+            <div class='rating-stars'>
+              <ul id='stars'>
+                <li class='star' title='Poor' data-value='1'>
+                  <i class='fa fa-star fa-fw'></i>
+                </li>
+                <li class='star' title='Fair' data-value='2'>
+                  <i class='fa fa-star fa-fw'></i>
+                </li>
+                <li class='star' title='Good' data-value='3'>
+                  <i class='fa fa-star fa-fw'></i>
+                </li>
+                <li class='star' title='Excellent' data-value='4'>
+                  <i class='fa fa-star fa-fw'></i>
+                </li>
+                <li class='star' title='WOW!!!' data-value='5'>
+                  <i class='fa fa-star fa-fw'></i>
+                </li>
+              </ul>
+              <div class='text-message'></div>
+
+            </div>
+
+
+          </section>
+
+          	
+          <br>
+
+            <label>Review Title</label>
+            <input class="revbitinput" type="text" name="">
+
+            <label class="reviewcutomcolor">Detailed Review</label>
+            <textarea class="revbitinput" name="Text1" cols="40" rows="5"></textarea>
+
+            <div class="reviewSL">
+              <div style="width:50%; margin-right:5px;">
+                <label>First Name</label>
+                <input class="revbitinput" type="text" name="">
+              </div>
+              <div style="width:50%; margin-left:5px;">
+                <label>Email ID</label>
+                <input class="revbitinput" type="text" name="">
+              </div>
+            </div>
+
+          	<label>Upload Product images</label>         
+            <div class="reviewSL">
+              <img id="blah" class="fileSelected" src="#" alt="your image" />
+              <input type="file" name="file" id="file" class="inputfile" />
+              <label for="file">Choose file</label>	        
+            </div>              
+			<br>
+            <button class="reviewbitBtn"> Submit Review</button>
+          
+         </div>
+     </div>  
+
+
+</div>
+
+
+<script>
+
+  var modal = document.getElementById("revbitModal");
+  var btn = document.getElementById("myBtn");
+  var span = document.getElementsByClassName("close")[0];
+  btn.onclick = function() {
+    modal.style.display = "block";
+  }
+  span.onclick = function() {
+    modal.style.display = "none";
+  }
+  window.onclick = function(event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  }
+  
+  $(document).ready(function(){
+  
+    /* 1. Visualizing things on Hover - See next part for action on click */
+    $('#stars li').on('mouseover', function(){
+      var onStar = parseInt($(this).data('value'), 10); // The star currently mouse on
+
+      // Now highlight all the stars that's not after the current hovered star
+      $(this).parent().children('li.star').each(function(e){
+        if (e < onStar) {
+          $(this).addClass('hover');
+        }
+        else {
+          $(this).removeClass('hover');
+        }
+      });
+
+    }).on('mouseout', function(){
+      $(this).parent().children('li.star').each(function(e){
+        $(this).removeClass('hover');
+      });
+    });
+
+
+    /* 2. Action to perform on click */
+    $('#stars li').on('click', function(){
+      var onStar = parseInt($(this).data('value'), 10); // The star currently selected
+      var stars = $(this).parent().children('li.star');
+
+      for (i = 0; i < stars.length; i++) {
+        $(stars[i]).removeClass('selected');
+      }
+
+      for (i = 0; i < onStar; i++) {
+        $(stars[i]).addClass('selected');
+      }
+
+      // JUST RESPONSE (Not needed)
+      var ratingValue = parseInt($('#stars li.selected').last().data('value'), 10);
+      var msg = "";
+      if (ratingValue > 1) {
+          msg = "Thanks! You rated this " + ratingValue + " stars.";
+      }
+      else {
+          msg = "You rated this " + ratingValue + " stars.";
+      }
+      responseMessage(msg);
+
+    });
+    
+   
+
+    $("#file").change(function() {
+      readURL(this);
+    });
+
+    var btns = document.getElementsByClassName("thumbButton");
+    for (var i = 0; i < btns.length; i++) {
+      btns[i].addEventListener("click", function () {
+        //Add function here
+       
+        $(this).addClass('thumbButtonSelected');
+        
+      });
+    }
+  });
+
+ 
+  function readURL(input) {
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
+
+      reader.onload = function(e) {
+        $('#blah').attr('src', e.target.result);
+        $('#blah').addClass('showElement');
+      }
+
+      reader.readAsDataURL(input.files[0]); // convert to base64 string
+    }
+  }
+
+  function responseMessage(msg) {
+
+    $('.text-message').fadeIn(200);  
+    $('.text-message').html("<span>" + msg + "</span>");
+
+  }
+  
+
+</script>
